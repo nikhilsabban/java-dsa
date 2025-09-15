@@ -1,0 +1,27 @@
+https://claude.ai/public/artifacts/773c2368-93d9-4049-9347-b15df90b597c
+https://leetcode.com/problems/subsets/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class backtrack{
+     public static void  solve(int[] arr ,List<List<Integer>> list , List<Integer> temp ,int index ){
+        if(index == arr.length){
+            list.add(new ArrayList<>(temp));
+            return;
+        }
+            temp.add(arr[index]);
+            solve(arr, list, temp , index+1);
+            temp.remove(temp.size()-1);
+            solve(arr, list, temp, index+1);
+        
+
+    }
+    public static void main(String[] args) {
+       int[] arr = {1,2,3};
+       
+       List<List<Integer>> list = new ArrayList<>();
+       solve(arr, list , new ArrayList<>() , 0 );
+       System.out.println(list);
+    }
+}
