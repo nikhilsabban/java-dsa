@@ -1,0 +1,25 @@
+approach use direct minus from n while we get 0 
+https://leetcode.com/problems/climbing-stairs/
+this is not optimized solution
+
+class Solution {
+
+     public static int  solve(int num  ){
+      if(num==0){
+        return 1;
+      }
+      if(num<0) return 0;
+    
+      return solve(num-1) + solve(num-2);
+
+
+    }
+
+
+    
+    
+    public int climbStairs(int n) {
+        return solve(n  );
+        
+    }
+}
