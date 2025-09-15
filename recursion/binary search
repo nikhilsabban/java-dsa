@@ -1,0 +1,30 @@
+https://leetcode.com/problems/binary-search/description/
+
+
+class Solution {
+    public static int solve(int[] arr , int target , int beg , int end , int mid){
+        if(arr[mid] ==target){
+            return mid ;
+        }
+        if(beg>end){
+            return -1;
+        }
+        
+
+        mid = beg+(end-beg)/2;
+        if(arr[mid]<target){
+            beg = mid+1;
+        }
+        else{
+            end= mid-1;
+        }
+        
+        return solve(arr, target, beg, end, mid);
+         
+
+    }
+    public int search(int[] nums, int target) {
+       int ans = solve(nums ,target ,0 , nums.length-1 , 0);
+       return ans;
+    }
+}
