@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class backtrack{
+    public static int solve(int num , int steps ) {
+        if(num==0){
+            return steps;
+        }
+        if(num%2==0){
+            num=num/2;
+            steps++;
+        }
+        else{
+            num-=1;
+            steps++;
+        }
+        return solve(num, steps);
+    }
+    
+    public static void main(String[] args) {
+    int i = 14 ;
+    int steps  = 0;
+    System.out.println(solve(i , steps ));
+    
+    
+       
+    
+    }
+}
