@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class backtrack{
+    public static void solve(int[] arr , int index , int min , int max) {
+        if(index == arr.length){
+            System.out.println(min + "" + max);
+            return;
+        }
+        if(arr[index]>max){
+            max = arr[index];
+        }
+        if(arr[index]<min){
+            min = arr[index];
+        }
+
+        solve(arr ,index+1 , min , max);
+    }
+    
+    public static void main(String[] args) {
+      int[] arr = {1, 4, 3, -5, -4, 8, 6};
+      solve(arr , 0, Integer.MAX_VALUE , Integer.MIN_VALUE);
+    
+       
+    
+    }
+}
