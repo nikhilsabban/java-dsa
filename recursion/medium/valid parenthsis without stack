@@ -1,0 +1,45 @@
+https://www.geeksforgeeks.org/dsa/check-for-balanced-parenthesis-without-using-stack/
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class backtrack{
+    public static char match(char ch){
+        if(ch =='(') return ')';
+        if(ch=='[') return ']';
+        if(ch=='{') return '}';
+        return 0 ;
+    } 
+    public static Boolean solve(String exp) {
+        if(exp.length()==0) return true;
+        if(exp.length()==1) return false;
+        
+        char temp = exp.charAt(0);
+        char ch = match(exp.charAt(0));
+        int count = 0 ,  i ;
+        for (i = 1; i <exp.length(); i++) {
+            if(exp.charAt(i) == temp ) count++;
+            if(exp.charAt(i)==ch) {
+                if(count==0){
+                    break;
+                }
+                count--;
+            }
+        }
+        
+        String inside = exp.substring(1 , i);
+        String outside = exp.substring(i+1);
+        return solve(inside)&&solve(outside);
+    }
+    
+    public static void main(String[] args) {
+    String exp = "[(])";
+    System.out.println(solve(exp));
+    
+    
+       
+    
+    }
+}
