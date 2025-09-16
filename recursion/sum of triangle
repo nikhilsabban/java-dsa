@@ -1,0 +1,32 @@
+https://www.geeksforgeeks.org/dsa/sum-triangle-from-array/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class backtrack{
+    public static void solve(ArrayList<Integer> list , int size) {
+        if(size==0){
+            return;
+        }
+        System.out.println(list);
+        for (int i = 1; i < list.size(); i++) {
+            list.set(i-1 ,list.get(i)+list.get(i-1));
+        }
+        list.remove(size-1);
+
+        solve(list, size-1);
+    }
+    
+    public static void main(String[] args) {
+      int[] a = {1, 2, 3, 4, 5};
+      ArrayList<Integer> list = new ArrayList<>();
+      for (int i = 0; i < a.length; i++) {
+        list.add(a[i]);
+      }
+      solve(list , list.size());
+    
+       
+    
+    }
+}
