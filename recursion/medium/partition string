@@ -1,0 +1,44 @@
+
+https://www.geeksforgeeks.org/dsa/given-a-string-print-all-possible-palindromic-partition/
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class backtrack{
+    public static Boolean ispalindrome(String exp , int start , int end) {
+        while(start <=end){
+            if(exp.charAt(start++) != exp.charAt(end--)){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+    public static void solve(String exp , int index , ArrayList<String> list,ArrayList<ArrayList<String>> ans) {
+       if(index==exp.length()){
+        ans.add(new ArrayList<>(list));
+        return;
+       }
+    for (int i = index; i <exp.length(); i++) {
+        if(ispalindrome(exp ,index , i )){
+            list.add(exp.substring(index, i+1));
+            solve(exp, i+1, list, ans);
+            list.remove(list.size()-1);
+
+        }
+    }
+    }
+    
+    public static void main(String[] args) {
+    String str = "aabb";
+    ArrayList<String> list = new ArrayList<>();
+    ArrayList<ArrayList<String>> ans = new ArrayList<>();
+    solve(str , 0 , list , ans );
+    System.out.println(ans);
+
+    
+    
+       
+    
+    }
+}
