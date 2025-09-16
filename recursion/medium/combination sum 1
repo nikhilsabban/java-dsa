@@ -1,0 +1,34 @@
+https://leetcode.com/problems/combination-sum/description/
+import java.util.ArrayList;
+
+class backtrack{
+
+    public static void solve(int[] arr , ArrayList<Integer> list,ArrayList<ArrayList<Integer>> ans , int target ,int index) {
+        if(target == 0){
+            ans.add(new ArrayList<>(list));
+            return;
+        }
+        if(target<0){ 
+            return;
+        }
+
+        for (int i = index; i < arr.length; i++) {
+            list.add(arr[i]);
+            solve(arr, list, ans, target-arr[i], i);
+            list.remove(list.size()-1);
+        }
+
+    }
+
+   
+    public static void main(String[] args) {
+        int[] arr = {2,3,6,7};
+        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        int target = 7 ;
+
+        solve(arr , list ,ans ,target ,0);
+        System.out.println(ans);
+
+    }
+}
