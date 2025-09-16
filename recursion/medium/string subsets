@@ -1,0 +1,21 @@
+https://www.geeksforgeeks.org/dsa/powet-set-lexicographic-order/
+import java.util.ArrayList;
+
+class backtrack{
+
+    public static void solve(String str , int index ,ArrayList<String> list){
+        if(str.length() == index){
+            System.out.println(list);
+            return ;
+        }
+        list.add(str.charAt(index)+"");
+        solve(str, index+1, list);
+        list.remove(list.size()-1);
+        solve(str, index+1, list);
+    }
+    public static void main(String[] args) {
+        String str = "abc";
+        ArrayList<String> list =new ArrayList<>();
+        solve(str , 0 , list);
+    }
+}
